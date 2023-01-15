@@ -1,11 +1,18 @@
 import { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [state, setState] = useState({ count: 5, user: "Eve" });
+
+  const clickHandler = () => {
+    setState({
+      ...state,
+      count : state.count + 1,
+    });
+    };
   return (
     <>
-      <p>{count}</p>
-      <button onClick={() => setCount(count + 1)}>Increase</button>
+      <p>{state.count}</p>
+      <button onClick={clickHandler}>Increase</button>
     </>
   );
 }

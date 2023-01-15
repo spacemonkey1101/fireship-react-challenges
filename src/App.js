@@ -1,19 +1,26 @@
-import "./App.css";
+import { useState } from "react";
 
-const data = [
-  { id: 1, name: "Bilbo" },
-  { id: 2, name: "Frodo" },
-  { id: 3, name: "samwise" },
-  { id: 4, name: "Pippin" },
-];
 function App() {
+  const [value, setValue] = useState("");
+
+  const typeHandler = (event) => {
+    setValue(event.target.value);
+    console.log(event.target);
+  };
+
   return (
-    <ul>
-      {data &&
-        data.map(({ id, name }) => {
-          return <li key={id}>{name}</li>;
-        })}
-    </ul>
+    <>
+      <label htmlFor="name">Input:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        size="25"
+        value={value}
+        placeholder="enter some text"
+        onChange={typeHandler}
+      />
+    </>
   );
 }
 
